@@ -1,0 +1,47 @@
+
+Program to generate a password and check if it is weak or strong
+--------------------------------------------------------------------------------------
+
+#importing the libraries
+import string
+import random
+
+#Taking user input
+value = input("Enter a string : ")
+length = int(input("Enter password length : "))
+
+#picking random characters from the string
+password = []
+for i in range(length):
+    password.append(random.choice(value))
+    
+#shuffling the resultant password
+random.shuffle(password)
+
+#printing the password
+print("".join(password))
+
+#check if password is strong or weak
+def pass_check(password):
+    x = True
+    if len(password) < length :
+        print("Length of password should be equal to the specified length.")
+        x = False
+    if not any(char.isdigit() for char in password):
+        print('the password should have at least one numeral')
+        x = False
+    if not any(char.isupper() for char in password):
+        print('the password should have at least one uppercase letter')
+        x = False
+    if not any(char.islower() for char in password):
+        print('the password should have at least one lowercase letter')
+        x = False
+
+    if x:
+        print("Strong password")
+    return " "
+
+    
+print(pass_check(password))
+
+------------------------------------------------------------------------------------------------------------------------------------
